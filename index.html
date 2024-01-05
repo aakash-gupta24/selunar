@@ -42,7 +42,7 @@
         document.getElementById("refresher").addEventListener("mouseover",reciveData);
         function sendData(){
             const dbref=ref(db);
-            /*get(child(dbref,'msgUser/'+(a))).then((snapshot)=>{
+            get(child(dbref,'msgUser/'+(lv))).then((snapshot)=>{
                     if(snapshot.exists()){
                         lv=(snapshot.val().no);
                     }
@@ -50,7 +50,6 @@
                 .catch((error)=>{
                     alert("error occ")
                 })
-            */
             set(ref(db,'msgUser/'+lv),{
                     no:lv,
                     data: document.getElementById("UserData").value,
@@ -58,12 +57,11 @@
             ld= document.getElementById("UserData").value;
             document.getElementById("UserData").value="";
             s=ld;
-            
         }
         function reciveData(){
             const dbref=ref(db);
-            console.log("check");
             var si=lv;
+            console.log(lv);
                 get(child(dbref,'msgUser/'+(si))).then((snapshot)=>{
                     if(snapshot.exists()){
                         s=snapshot.val().data;
@@ -76,6 +74,7 @@
                             let br=document.createElement("br");
                             document.getElementById("Chat-Screen").appendChild(br);
                             ld=s;
+                            lv=snapshot.val().no;
                         }
                     }
                 })
