@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body id="refresher">
+    <div id="Logo-div">
+        LOGO
+    </div>
+    <div id="Parent-div" class="clearfix">
+        <div id="Users-side">
+            <button onclick="AddUser()">Add</button>
+        </div>
+        <div id="Chat-Screen">
+            
+        </div>
+        <div id="mainc">
+            <textarea name="UD" id="UserData" placeholder="Type Here..." style="width: 70%; height: 30px;"></textarea>
+            <button id="maindoer" onclick="US()" style="width: 30%; height: 30px;">SEND</button>
+            <button id="maindoe1r" onclick="" style="width: 30%; height: 30px;">recive</button>
+        </div>
+    </div>
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+        import { getDatabase, ref, set, get, child, update, remove } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
+        const firebaseConfig = {
+            apiKey: "AIzaSyAECk_y7T4ai4axINEYUev4hNmwVOsjR2M",
+            authDomain: "chat1-82294.firebaseapp.com",
+            projectId: "chat1-82294",
+            storageBucket: "chat1-82294.appspot.com",
+            messagingSenderId: "661869624532",
+            appId: "1:661869624532:web:b6208eee364bee4adc4f41"
+        };
+        const app = initializeApp(firebaseConfig);
+        const db=getDatabase(app);
+        document.getElementById("maindoer").addEventListener('click',sendData);
+        let lv=0;
+        let s="";
+        let ld="";
+        document.getElementById("refresher").addEventListener("mouseover",reciveData);
+        function sendData(){
+            const dbref=ref(db);
+            /*get(child(dbref,'msgUser/'+(a))).then((snapshot)=>{
+                    if(snapshot.exists()){
+                        lv=(snapshot.val().no);
+                    }
+                })
+                .catch((error)=>{
+                    alert("error occ")
+                })
+            */
+            set(ref(db,'msgUser/'+a),{
+                    no:lv+1,
+                    data: document.getElementById("UserData").value,
+                });
+            ld= document.getElementById("UserData").value;
+            document.getElementById("UserData").value="";
+            s=ld;
+            lv+=1;
+        }
+        function reciveData(){
+            const dbref=ref(db);
+            console.log("check");
+            var si=1;
+                get(child(dbref,'msgUser/'+(si))).then((snapshot)=>{
+                    if(snapshot.exists()){
+                        s=snapshot.val().no;
+                        var da=snapshot.val().data;
+                        if(s!=lv){
+                            let ms=document.createElement('label');
+                            ms.innerHTML=da;
+                            console.log("here");
+                            document.getElementById("Chat-Screen").appendChild(ms);
+                            let br=document.createElement("br");
+                            document.getElementById("Chat-Screen").appendChild(br);
+                            lv=s;
+                        }
+                    }
+                })
+                .catch((error)=>{
+                    
+                })
+        }
+    </script>
+    <script>
+        function US(){
+            console.log("WORK");
+            let UD=document.getElementById("UserData").value;
+            let msg=document.createElement("label");
+            msg.innerText=UD;
+            let br=document.createElement("br");
+            document.getElementById("Chat-Screen").appendChild(msg);
+            document.getElementById("Chat-Screen").appendChild(br);
+        }
+    </script>
+    <script src="index.js">
+    </script>
+</body>
+</html>

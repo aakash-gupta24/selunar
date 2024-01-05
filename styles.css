@@ -1,0 +1,56 @@
+*{
+    box-sizing: border-box;
+}
+#Logo-div{
+    width: 100%;
+    min-height: 50px;
+    padding-left: 2%;
+    line-height: 50px;
+    background-color:lightslategray;
+}
+#Parent-div{
+    width: 100%;
+    line-height: 50px;
+}
+#Users-side{
+    width: 20%;
+    height: 770px;
+    background-color: azure;
+    line-height: 1px;
+    float: left;
+}
+#Chat-Screen{
+    width: 80%;
+    min-height: 627px;
+    background-color: rgb(30, 128, 128);
+    float: right;
+}
+.clearfix::after{
+    content: "";
+    display: block;
+    clear: both;
+}
+body{
+    font-family: Arial, Helvetica, sans-serif;
+}
+#mainc{
+    width: 100%;
+    min-height: 50px;
+    background-color: lightgray;
+    width:80%;
+    float: right;
+}
+
+button{
+    height: 50px;
+    width: 99%;
+}
+label{
+    background-color: coral;
+    border:0px;
+    border-radius: 1px;
+    padding: 2px;
+    line-height: 20px;
+    padding-left: 20px;
+    padding-right: 8px;
+}
