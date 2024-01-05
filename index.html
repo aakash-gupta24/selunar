@@ -36,13 +36,13 @@
         const app = initializeApp(firebaseConfig);
         const db=getDatabase(app);
         document.getElementById("maindoer").addEventListener('click',sendData);
-        let lv=1;
+        let lv=0;
         let s="";
         let ld="";
         document.getElementById("refresher").addEventListener("mouseover",reciveData);
         function sendData(){
             const dbref=ref(db);
-            get(child(dbref,'msgUser/'+(lv))).then((snapshot)=>{
+            /*get(child(dbref,'msgUser/'+(lv))).then((snapshot)=>{
                     if(snapshot.exists()){
                         lv=(snapshot.val().no);
                     }
@@ -50,6 +50,8 @@
                 .catch((error)=>{
                     alert("error occ")
                 })
+            */
+           lv+=1;
             set(ref(db,'msgUser/'+lv),{
                     no:lv,
                     data: document.getElementById("UserData").value,
@@ -60,9 +62,9 @@
         }
         function reciveData(){
             const dbref=ref(db);
-            var si=lv;
+            var sc=lv;
             console.log(lv);
-                get(child(dbref,'msgUser/'+(si))).then((snapshot)=>{
+                get(child(dbref,'msgUser/'+(sc+1))).then((snapshot)=>{
                     if(snapshot.exists()){
                         s=snapshot.val().data;
                         var res=ld.localeCompare(s);
@@ -74,8 +76,9 @@
                             let br=document.createElement("br");
                             document.getElementById("Chat-Screen").appendChild(br);
                             ld=s;
-                            lv=snapshot.val().no;
+                            sc+=1;
                         }
+                        lv=snapshot.val().no;
                     }
                 })
                 .catch((error)=>{
