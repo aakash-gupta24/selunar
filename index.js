@@ -1,4 +1,3 @@
-
 function AddUser(){
     let n=document.createElement("button")
     n.innerText=prompt("Enter the name","");
