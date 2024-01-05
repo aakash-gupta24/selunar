@@ -36,7 +36,7 @@
         const app = initializeApp(firebaseConfig);
         const db=getDatabase(app);
         document.getElementById("maindoer").addEventListener('click',sendData);
-        let lv=0;
+        let lv=1;
         let s="";
         let ld="";
         document.getElementById("refresher").addEventListener("mouseover",reciveData);
@@ -52,30 +52,30 @@
                 })
             */
             set(ref(db,'msgUser/'+lv),{
-                    no:lv+1,
+                    no:lv,
                     data: document.getElementById("UserData").value,
                 });
             ld= document.getElementById("UserData").value;
             document.getElementById("UserData").value="";
             s=ld;
-            lv+=1;
+            
         }
         function reciveData(){
             const dbref=ref(db);
             console.log("check");
-            var si=1;
+            var si=lv;
                 get(child(dbref,'msgUser/'+(si))).then((snapshot)=>{
                     if(snapshot.exists()){
-                        s=snapshot.val().no;
-                        var da=snapshot.val().data;
-                        if(s!=lv){
+                        s=snapshot.val().data;
+                        var res=ld.localeCompare(s);
+                        if(res!=0){
                             let ms=document.createElement('label');
-                            ms.innerHTML=da;
+                            ms.innerHTML=s;
                             console.log("here");
                             document.getElementById("Chat-Screen").appendChild(ms);
                             let br=document.createElement("br");
                             document.getElementById("Chat-Screen").appendChild(br);
-                            lv=s;
+                            ld=s;
                         }
                     }
                 })
