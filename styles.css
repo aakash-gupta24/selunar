@@ -54,3 +54,10 @@ label{
     padding-left: 20px;
     padding-right: 8px;
 }
+
+#sender{
+    background-color: aqua;
+    position: absolute;
+    text-align: left;
+    right: 10px;
+}
