@@ -63,7 +63,6 @@
         function reciveData(){
             const dbref=ref(db);
             var sc=lv;
-            console.log(lv);
                 get(child(dbref,'msgUser/'+(sc+1))).then((snapshot)=>{
                     if(snapshot.exists()){
                         s=snapshot.val().data;
@@ -71,7 +70,6 @@
                         if(res!=0){
                             let ms=document.createElement('label');
                             ms.innerHTML=s;
-                            console.log("here");
                             document.getElementById("Chat-Screen").appendChild(ms);
                             let br=document.createElement("br");
                             document.getElementById("Chat-Screen").appendChild(br);
@@ -88,10 +86,10 @@
     </script>
     <script>
         function US(){
-            console.log("WORK");
             let UD=document.getElementById("UserData").value;
             let msg=document.createElement("label");
             msg.innerText=UD;
+            msg.id="sender";
             let br=document.createElement("br");
             document.getElementById("Chat-Screen").appendChild(msg);
             document.getElementById("Chat-Screen").appendChild(br);
