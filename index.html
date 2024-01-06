@@ -54,7 +54,7 @@
             lv+=1;
             set(ref(db,'msgUser/'+lv),{
                     no:lv,
-                    data: document.getElementById("UserData").value,
+                    data: nameOfUser+"  : "+ document.getElementById("UserData").value,
                 });
             ld= document.getElementById("UserData").value;
             document.getElementById("UserData").value="";
@@ -85,10 +85,11 @@
         }
     </script>
     <script>
+        let nameOfUser=prompt("Enter your name:");
         function US(){
             let UD=document.getElementById("UserData").value;
             let msg=document.createElement("label");
-            msg.innerText=UD;
+            msg.innerText=nameOfUser+"  : "+ UD;
             msg.id="sender";
             let br=document.createElement("br");
             document.getElementById("Chat-Screen").appendChild(msg);
