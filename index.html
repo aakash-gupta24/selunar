@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html id="PAge">
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -40,7 +40,7 @@
         let lv=0;
         let s="";
         let ld="";
-        document.getElementById("refresher").addEventListener("mouseover",reciveData);
+        //document.getElementById("refresher").addEventListener("mouseover",reciveData);
         function sendData(){
             const dbref=ref(db);
             /*get(child(dbref,'msgUser/'+(lv))).then((snapshot)=>{
@@ -88,8 +88,29 @@
             const ScrollDown = document.getElementById('Chat-Screen');
             ScrollDown.scrollTop = ScrollDown.scrollHeight;
         }
-    </script>
-    <script>
+
+        let intervalId = null;
+        window.onload = function() {
+            const refresher = document.getElementById("refresher");
+
+            // Add a 'mousemove' event listener to the element
+            refresher.addEventListener("mousemove", function() {
+                // Check if interval is already running
+                if (intervalId === null) {
+                // Start the interval to call reciveData every 1000ms
+                    intervalId = setInterval(reciveData, 1000);
+                }
+                });
+
+                // Optionally, you could stop the interval when the mouse leaves the element
+                refresher.addEventListener("mouseleave", function() {
+                if (intervalId !== null) {
+                    clearInterval(intervalId);
+                    intervalId = null;
+                    
+                }
+            });
+        };
         let nameOfUser=prompt("Enter your name:");
         function US(){
             let UD=document.getElementById("UserData").value;
@@ -101,7 +122,24 @@
             document.getElementById("Chat-Screen").appendChild(br);
             const ScrollDown = document.getElementById('Chat-Screen');
             ScrollDown.scrollTop = ScrollDown.scrollHeight;
+            sendData();
         }
+        const inputField = document.getElementById('UserData');
+        // Add an event listener for the 'keydown' event
+        inputField.addEventListener('keydown', function(event) {
+        // Check if the Enter key (key code 13) is pressed
+        if (event.key === 'Enter') {
+            // Prevent the default action (such as form submission)
+            event.preventDefault();
+            // Get the value of the input field
+            const inputValue = inputField.value;
+            // Display the value
+            
+            US();
+            // Clear the input field
+            inputField.value = '';
+        }
+    });
         
     </script>
     <script src="index.js">

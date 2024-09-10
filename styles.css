@@ -51,15 +51,17 @@ label{
     border:0px;
     border-radius: 1px;
     padding: 2px;
-    line-height: 20px;
+    
     padding-left: 20px;
     padding-right: 8px;
 }
 
 #sendermsg{
     background-color: aqua;
+    line-height: 20px;
     position: relative;
     float: right;
     text-align: left;
     right: 10px;
 }
+
