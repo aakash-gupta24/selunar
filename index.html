@@ -12,6 +12,7 @@
     <div id="Parent-div" class="clearfix">
         <div id="Users-side">
             <button onclick="AddUser()">Add</button>
+            
         </div>
         <div id="Chat-Screen">
             
@@ -59,6 +60,8 @@
             ld= document.getElementById("UserData").value;
             document.getElementById("UserData").value="";
             s=ld;
+            const ScrollDown = document.getElementById('Chat-Screen');
+            ScrollDown.scrollTop = ScrollDown.scrollHeight;
         }
         function reciveData(){
             const dbref=ref(db);
@@ -82,6 +85,8 @@
                 .catch((error)=>{
                     
                 })
+            const ScrollDown = document.getElementById('Chat-Screen');
+            ScrollDown.scrollTop = ScrollDown.scrollHeight;
         }
     </script>
     <script>
@@ -90,11 +95,14 @@
             let UD=document.getElementById("UserData").value;
             let msg=document.createElement("label");
             msg.innerText=nameOfUser+"  : "+ UD;
-            msg.id="sender";
+            msg.id="sendermsg";
             let br=document.createElement("br");
             document.getElementById("Chat-Screen").appendChild(msg);
             document.getElementById("Chat-Screen").appendChild(br);
+            const ScrollDown = document.getElementById('Chat-Screen');
+            ScrollDown.scrollTop = ScrollDown.scrollHeight;
         }
+        
     </script>
     <script src="index.js">
     </script>
