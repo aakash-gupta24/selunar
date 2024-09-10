@@ -11,7 +11,13 @@
     </div>
     <div id="Parent-div" class="clearfix">
         <div id="Users-side">
-            <button onclick="AddUser()">Add</button>
+            <div id="AddedUsers">
+                <button onclick="defaults()">Global</button>
+                <button onclick="AddUser()">Add</button>
+            </div>
+            <div id="AllUsers">
+
+            </div>
             
         </div>
         <div id="Chat-Screen">
@@ -53,7 +59,7 @@
                 })
             */
             lv+=1;
-            set(ref(db,'msgUser/'+lv),{
+            set(ref(db,CurrentUser+"/"+lv),{
                     no:lv,
                     data: nameOfUser+"  : "+ document.getElementById("UserData").value,
                 });
@@ -66,7 +72,7 @@
         function reciveData(){
             const dbref=ref(db);
             var sc=lv;
-                get(child(dbref,'msgUser/'+(sc+1))).then((snapshot)=>{
+                get(child(dbref,CurrentUser+"/"+(sc+1))).then((snapshot)=>{
                     if(snapshot.exists()){
                         s=snapshot.val().data;
                         var res=ld.localeCompare(s);
@@ -88,6 +94,36 @@
             const ScrollDown = document.getElementById('Chat-Screen');
             ScrollDown.scrollTop = ScrollDown.scrollHeight;
         }
+
+
+        let nameOfUser=prompt("Enter your name:");
+        function US(){
+            let UD=document.getElementById("UserData").value;
+            let msg=document.createElement("label");
+            msg.innerText=nameOfUser+"  : "+ UD;
+            msg.id="sendermsg";
+            let br=document.createElement("br");
+            document.getElementById("Chat-Screen").appendChild(msg);
+            document.getElementById("Chat-Screen").appendChild(br);
+            const ScrollDown = document.getElementById('Chat-Screen');
+            ScrollDown.scrollTop = ScrollDown.scrollHeight;
+            sendData();
+        }
+
+
+        function ChangeChat(){
+            document.getElementById("Chat-Screen").innerHTML="";
+            //CurrentUser=event.target
+            //console.log(CurrentUser);
+        }
+
+        function defaults(){
+            CurrentUser="global";
+        }
+
+
+
+        let CurrentUser="global";
 
         let intervalId = null;
         window.onload = function() {
@@ -111,19 +147,9 @@
                 }
             });
         };
-        let nameOfUser=prompt("Enter your name:");
-        function US(){
-            let UD=document.getElementById("UserData").value;
-            let msg=document.createElement("label");
-            msg.innerText=nameOfUser+"  : "+ UD;
-            msg.id="sendermsg";
-            let br=document.createElement("br");
-            document.getElementById("Chat-Screen").appendChild(msg);
-            document.getElementById("Chat-Screen").appendChild(br);
-            const ScrollDown = document.getElementById('Chat-Screen');
-            ScrollDown.scrollTop = ScrollDown.scrollHeight;
-            sendData();
-        }
+        
+
+
         const inputField = document.getElementById('UserData');
         // Add an event listener for the 'keydown' event
         inputField.addEventListener('keydown', function(event) {
@@ -141,6 +167,8 @@
         }
     });
         
+
+    document.getElementById("AllUsers").addEventListener("click",ChangeChat);
     </script>
     <script src="index.js">
     </script>
