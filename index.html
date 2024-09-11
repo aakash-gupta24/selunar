@@ -24,9 +24,12 @@
             
         </div>
         <div id="mainc">
+            <input type="text" id="UserData" placeholder="Type Here..." style="height: 50px; width: 80%; float: right;">
+            <!--
             <textarea name="UD" id="UserData" placeholder="Type Here..." style="width: 70%; height: 30px;"></textarea>
             <button id="maindoer" onclick="US()" style="width: 30%; height: 30px;">SEND</button>
             <button id="maindoe1r" onclick="" style="width: 30%; height: 30px;">recive</button>
+            -->
         </div>
     </div>
     <script type="module">
@@ -42,7 +45,7 @@
         };
         const app = initializeApp(firebaseConfig);
         const db=getDatabase(app);
-        document.getElementById("maindoer").addEventListener('click',sendData);
+        //document.getElementById("maindoer").addEventListener('click',sendData);
         let lv=0;
         let s="";
         let ld="";

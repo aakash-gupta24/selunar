@@ -22,7 +22,7 @@
 }
 #Chat-Screen{
     width: 80%;
-    min-height: 500px;
+    min-height: 720px;
     max-height: 500px;
     background-color: rgb(30, 128, 128);
     overflow: scroll;
@@ -39,7 +39,9 @@ body{
     width: 100%;
     min-height: 50px;
     background-color: lightgray;
-    width:80%;
+    width:100%;
+    padding-left: 10px;
+    
 }
 
 button{
