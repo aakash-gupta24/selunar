@@ -76,7 +76,16 @@ body{
     padding-left: 10px;
     
 }
-
+#DefMSG {
+background: 
+linear-gradient(to top, rgb(76, 0, 255), rgb(35, 197, 162));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    background-color: transparent; 
+    width: 100%; 
+    text-align: left;
+}
 button{
     height: 50px;
     width: 99%;
