@@ -25,9 +25,13 @@
 }
 #AddedUsers{
     button{
-        background-color: rgb(148, 150, 150);
-        backdrop-filter: blur(20px);
-        border-radius: px;
+        background-image: url(./chatBg.jpeg);
+        background-size: cover;
+        border-radius: 5px;
+        margin-top: 5px;
+        box-shadow: 0 0 5px 0 ;
+        color: aliceblue;
+
     }
 }
 #AllUsers{
