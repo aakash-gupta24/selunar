@@ -1,6 +1,9 @@
 *{
     box-sizing: border-box;
 }
+::-webkit-scrollbar{/*remove scrollbar*/
+    width: 0;
+}
 #Logo-div{
     width: 100%;
     min-height: 50px;
