@@ -22,11 +22,18 @@
 }
 #AddedUsers{
     button{
-        background-color: rgb(18, 93, 41);
+        background-color: rgb(148, 150, 150);
         backdrop-filter: blur(20px);
         border-radius: px;
-        padding-top: 2px;
     }
+}
+#AllUsers{
+    button{
+        background-color: rgb(255, 255, 255);
+        backdrop-filter: blur(20px);
+        border-radius: 5px;
+    }
+    padding-top: 20px;
 }
 #Chat-Screen{
     width: 80%;
