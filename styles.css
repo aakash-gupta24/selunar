@@ -35,6 +35,14 @@
     }
     padding-top: 20px;
 }
+#Logo-div{
+    background-image: url(./logoMain.jpg);
+    background-repeat: no-repeat;
+    background-size:50px;
+    float: left;
+    background-position: 3px 3px;
+
+}
 #Chat-Screen{
     width: 80%;
     min-height: 720px;
