@@ -15,16 +15,27 @@
 #Users-side{
     width: 20%;
     height: 770px;
-    background-color: azure;
+    background-color: rgb(44, 47, 92);
     line-height: 1px;
     position: relative;
     float: left;
+}
+#AddedUsers{
+    button{
+        background-color: rgb(18, 93, 41);
+        backdrop-filter: blur(20px);
+        border-radius: px;
+        padding-top: 2px;
+    }
 }
 #Chat-Screen{
     width: 80%;
     min-height: 720px;
     max-height: 500px;
     background-color: rgb(30, 128, 128);
+    background-image: url(./chatBg.jpeg);
+    background-repeat: no-repeat;
+    background-size: cover;
     overflow: scroll;
 }
 .clearfix::after{
